@@ -1,313 +1,297 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Road to The Throne — Québec HC</title>
-  <meta name="description" content="Formulaire d’intérêt pour constituer les alignements par tournoi (Boston, Montreal Meltdown, The Throne)." />
-  <link rel="icon" href="logos/qhc.png">
-  <style>
-    :root{ --bg:#0f172a; --panel:#0e152a; --panel2:#0a1020; --text:#e7ecf3; --muted:#a7b3c7; --accent:#d4af37; --accent2:#3b82f6; --ring: rgba(59,130,246,.3); --radius:20px;}
-    *{box-sizing:border-box} html,body{scroll-behavior:smooth}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:radial-gradient(1200px 600px at 10% -20%,#0b2451 0%,transparent 60%),linear-gradient(180deg,#091024,#0a0f1a);color:var(--text);line-height:1.6}
-    header{padding:44px 24px 8px;max-width:1040px;margin:0 auto}
-    .brand{display:flex;align-items:center;gap:18px}
-    .brand .logo{width:78px;height:78px;flex:0 0 78px;border-radius:18px;background:radial-gradient(closest-side,rgba(59,130,246,.35),transparent 65%);display:grid;place-items:center;overflow:hidden;box-shadow:0 16px 44px rgba(3,102,214,.35)}
-    .brand .logo img{width:100%;height:100%;object-fit:cover;border-radius:16px}
-    h1{font-size:clamp(1.6rem,1.1rem + 2vw,2.2rem);margin:0;letter-spacing:.2px}
-    .subline{margin-top:6px;color:var(--muted)}
-    main{padding:12px 24px 56px;max-width:1040px;margin:0 auto}
-    .card, form{background:linear-gradient(180deg,var(--panel2),var(--panel));border-radius:var(--radius);border:1px solid rgba(255,255,255,.06);box-shadow:0 12px 48px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.04);padding:28px}
-    .card{margin-bottom:18px}
-    form{margin-top:18px}
-    fieldset{border:1px solid rgba(255,255,255,.08);padding:22px;border-radius:16px;margin:20px 0 0}
-    legend{padding:0 10px;color:var(--accent2);font-weight:700;letter-spacing:.2px;font-size:1rem}
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(12,1fr)}
-    .col-12{grid-column:span 12}.col-6{grid-column:span 6}.col-4{grid-column:span 4}.col-3{grid-column:span 3}
-    @media (max-width:900px){.col-6,.col-4,.col-3{grid-column:span 12}}
-    label{display:block;font-size:.98rem;margin-bottom:8px}
-    input[type="text"],input[type="email"],input[type="tel"],input[type="range"],select,textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#0b1020;color:var(--text);outline:none;transition:box-shadow .2s,border-color .2s}
-    textarea{min-height:120px;resize:vertical}
-    input:focus,select:focus,textarea:focus{border-color:var(--accent2);box-shadow:0 0 0 5px var(--ring)}
-    .check-row{display:flex;flex-wrap:wrap;gap:16px}
-    .check{display:flex;gap:10px;align-items:center;background:#0b1020;padding:12px 14px;border:1px solid rgba(255,255,255,.08);border-radius:12px}
-    .muted{color:var(--muted);font-size:.95rem}
-    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .submit{margin-top:22px;display:flex;gap:14px;align-items:center;justify-content:flex-end}
-    button{appearance:none;border:0;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;padding:13px 20px;border-radius:16px;font-weight:700;cursor:pointer;box-shadow:0 14px 32px rgba(59,130,246,.28)}
-    button:hover{transform:translateY(-1px)}
-    .outline{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--text);box-shadow:none}
-    .small{font-size:.9rem}
-    .tournaments{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
-    .tcard{background:#0b1020;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;text-align:center}
-    .tcard img{max-width:160px;max-height:90px;width:auto;height:auto;display:inline-block}
-    .tcard .title{margin-top:10px;font-weight:700}
-    .lang-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media (max-width:900px){.lang-split{grid-template-columns:1fr}}
-    .lcard{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px}
-    .lcard h3{margin:0 0 8px;font-size:1.05rem;color:#eaf2ff}
-  </style>
+  <title>Québec HC Élite 2026</title>
+  <meta name="description" content="Québec HC Élite 2026 — Formulaire d’intérêt / Interest Form" />
+  <meta name="theme-color" content="#0a1020">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <!-- Leaflet CSS (map) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
 </head>
+
 <body>
-  <header>
-    <div class="brand">
-      <div class="logo" aria-hidden="true">
-        <img src="logos/qhc.png" alt="Logo Québec HC">
+  <noscript>
+    <div style="background:#3b82f6;color:#fff;padding:10px;text-align:center">
+      JavaScript requis pour la programmation, la carte et les validations. / JavaScript required for schedule, map and validations.
+    </div>
+  </noscript>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-wrap">
+      <div class="hero-logo">
+        <!-- IMPORTANT: app.js fera le fallback d’extension si besoin -->
+        <img id="hero_logo" src="logos/qhc" alt="Logo Québec HC">
       </div>
-      <div>
-        <h1>The Road to The Throne — Formulaire d’intérêt / Interest Form (Spring 2026)</h1>
-        <div class="subline">Indice de confiance demandé ≥ 80 % / Confidence required ≥ 80%.</div>
+
+      <div class="hero-text">
+        <h1>Québec HC Élite 2026</h1>
+        <p class="hero-sub">Formulaire d’intérêt / Interest Form</p>
+        <p class="hero-meta">Confiance requise ≥ 80% • Confidence required ≥ 80%</p>
       </div>
     </div>
   </header>
 
+  <!-- PROGRAMMATION -->
+  <section class="program">
+    <div class="program-wrap">
+      <h2 class="program-title">Programmation 2026 / 2026 Program</h2>
+
+      <!-- Filters (chips) -->
+      <div class="filters">
+        <div class="filter-group">
+          <div class="filter-label">Année / Year</div>
+          <div class="chips" id="year_chips" aria-label="Year filter"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Niveau / Level</div>
+          <div class="chips" id="level_chips" aria-label="Level filter"></div>
+        </div>
+
+        <div class="filter-group filter-toggle">
+          <label class="toggle">
+            <input type="checkbox" id="travel_toggle">
+            <span>Voyage (hors Amérique du Nord) / Travel (outside North America)</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- View toggle -->
+      <div class="view-toggle" role="tablist" aria-label="List or map view">
+        <button type="button" class="vt-btn active" id="vt_list" role="tab" aria-selected="true">Liste / List</button>
+        <button type="button" class="vt-btn" id="vt_map" role="tab" aria-selected="false">Carte / Map</button>
+      </div>
+
+      <!-- LIST container -->
+      <div id="events_list_wrap">
+        <div class="events-grid" id="events_list"></div>
+
+        <!-- Card template (logo + season icon + J-XX + date badge) -->
+        <template id="tpl_event_card">
+          <article class="ecard">
+            <a class="ecard-link" href="#" target="_blank" rel="noopener">
+              <img class="ecard-logo" src="" alt="">
+            </a>
+
+            <div class="badge badge-season" title="Saison / Season">📅</div>
+            <div class="badge badge-level" title="Niveau / Level"></div>
+            <div class="badge badge-j" title="Jours avant / Days to event">J-—</div>
+            <div class="badge badge-date" title="Dates">—</div>
+
+            <!-- Future: optional icons (✈️ / 🏕️) reserved -->
+            <div class="badge badge-extra" title="Spécial / Special" style="display:none;"></div>
+          </article>
+        </template>
+      </div>
+
+      <!-- MAP container -->
+      <div class="map-wrap" id="map_wrap" style="display:none;">
+        <div id="map" class="map"></div>
+        <div class="map-note">Cliquer un point pour voir l’événement. / Click a marker to view the event.</div>
+      </div>
+
+      <!-- Program messages -->
+      <div class="program-msg" id="program_msg" style="display:none;"></div>
+      <div class="program-error" id="program_error" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- FORMULAIRE (Google Apps Script) — on garde la façon d’envoyer inchangée -->
   <main>
-    <div class="card">
-      <div class="tournaments">
-        <div class="tcard">
-          <a href="https://200x85.com/event/ccm-blue-chip-invite/" target="_blank" rel="noopener">
-            <img src="logos/bluechip.png" alt="CCM Blue Chip Invite logo">
-            <div class="title">Boston Showdown — 29–31 mai 2026</div>
-          </a>
-        </div>
-        <div class="tcard">
-          <a href="https://200x85.com/tournaments/montreal-meltdown/" target="_blank" rel="noopener">
-            <img src="logos/meltdown.png" alt="Montreal Meltdown logo">
-            <div class="title">Montréal Meltdown — 5–7 juin 2026</div>
-          </a>
-        </div>
-        <div class="tcard">
-          <a href="https://phdbestofbest.com/the-throne/" target="_blank" rel="noopener">
-            <img src="logos/throne.png" alt="The Throne Tournament logo">
-            <div class="title">The Throne — 24–26 juillet 2026</div>
-          </a>
-        </div>
-      </div>
-    </div>
+    <form
+      action="https://script.google.com/macros/s/AKfycbwo_M5-za4xlXblsb-9yJ8it_izYLFZnS8p42zERudF3Jwbk4f5exUN_xYsnggdpmJHOg/exec"
+      method="POST"
+      id="qhc-form"
+      onsubmit="return businessOk()"
+      novalidate>
 
-    <div class="lang-split">
-      <div class="lcard">
-        <h3>FR — Informations importantes</h3>
-        <p>Nous sommes <u>au-delà d’un simple sondage</u>. Ce formulaire sert à constituer des <strong>alignements par tournoi</strong>. Indiquez un <strong>indice de confiance d’au moins 80&nbsp;%</strong> pour vos disponibilités.</p>
-        <p><strong>Règle The Throne</strong> : tout joueur qui participe à <em>The Throne</em> doit <u>obligatoirement</u> faire au moins <strong>un</strong> des deux autres tournois (Boston ou Meltdown).</p>
-        <p><strong>Capacité limitée</strong> : tout le monde ne pourra pas participer à tous les tournois ; notre équipe technique formera les <strong>meilleurs trios/duos</strong> disponibles.</p>
-        <p class="small"><strong>Assurances & décharges :</strong> des <u>frais d’assurances</u> (faibles) pourraient être demandés. Des <u>décharges/consentements</u> devront être signés. Les détails suivront.</p>
-      </div>
-      <div class="lcard">
-        <h3>EN — Key information</h3>
-        <p>We are <u>beyond a simple survey</u>. This form is used to build <strong>lineups per tournament</strong>. Please provide a <strong>commitment confidence of at least 80%</strong>.</p>
-        <p><strong>Throne rule</strong>: any player joining <em>The Throne</em> must commit to at least <strong>one</strong> of the other tournaments (Boston or Meltdown).</p>
-        <p><strong>Limited spots</strong>: not everyone will be able to attend all events; our staff will build the <strong>best lines/pairs</strong> available.</p>
-        <p class="small"><strong>Insurance & waivers:</strong> a small <u>insurance fee</u> may be required. <u>Waivers/consents</u> will be collected. Details to follow.</p>
-      </div>
-    </div>
+      <input type="hidden" name="_next" value="https://yaban1981.github.io/the-road-to-the-throne-site/thanks.html">
+      <input type="hidden" id="emailAlias" name="email" value="">
+      <input type="hidden" name="form_version" value="rttt_v1_native_apps_script">
 
-    <!-- NOTE: all field names are snake_case for easy CSV regrouping from email exports -->
-    <form action="https://formsubmit.co/yannick.banaszak@outlook.com" method="POST" id="qhc-form" novalidate>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="[QHC] RoadToThrone v1 — New Interest">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_bcc" value="David.belanger.6@ulaval.ca">
-      <input type="hidden" name="form_version" value="rttt_v1">
-      <input type="hidden" name="_next" value="https://thankyou.page.link/thanks">
+      <!-- 1) Player info -->
+      <fieldset id="fieldset-player">
+        <legend>1) Info joueur / Player Info</legend>
 
-      <fieldset>
-        <legend>1) Identification du joueur / Player Info</legend>
         <div class="grid">
-          <div class="col-6">
+          <div class="input-container">
             <label for="player_name">Nom complet / Full name <span class="req">*</span></label>
-            <input type="text" id="player_name" name="player_name" required autocomplete="name" />
+            <input id="player_name" name="player_name" type="text" required autocomplete="name">
           </div>
-          <div class="col-3">
+
+          <div class="input-container">
             <label for="birth_year">Année / Year <span class="req">*</span></label>
             <select id="birth_year" name="birth_year" required>
-              <option value="">— Sélectionner / Select —</option>
-              <option>2014</option><option>2015</option><option>2013</option><option>2012</option>
+              <option value="">— Choisir / Select —</option>
+              <option>2013</option><option>2014</option><option>2015</option><option>2016</option><option>2017</option><option>2018</option><option>2019</option>
             </select>
           </div>
-          <div class="col-3">
+
+          <div class="input-container">
+            <label for="player_level">Niveau / Level</label>
+            <select id="player_level" name="player_level">
+              <option value="">— Choisir / Select —</option>
+              <option value="elite">Élite / Elite</option>
+              <option value="aaa">AAA</option>
+            </select>
+          </div>
+
+          <div class="input-container">
             <label for="city">Ville / City <span class="req">*</span></label>
-            <input type="text" id="city" name="city" required />
+            <input id="city" name="city" type="text" required>
           </div>
-          <div class="col-6">
+
+          <div class="input-container">
             <label for="current_team">Équipe actuelle / Current team</label>
-            <input type="text" id="current_team" name="current_team" />
+            <input id="current_team" name="current_team" type="text">
           </div>
-          <div class="col-6">
+
+          <div class="input-container">
             <label for="parent_email">Courriel parent / Parent email <span class="req">*</span></label>
-            <input type="email" id="parent_email" name="parent_email" required autocomplete="email" />
+            <input id="parent_email" name="parent_email" type="email" required autocomplete="email" inputmode="email">
           </div>
-          <div class="col-6">
+
+          <div class="input-container">
             <label for="parent_phone">Téléphone parent / Parent phone</label>
-            <input type="tel" id="parent_phone" name="parent_phone" autocomplete="tel" />
+            <input id="parent_phone" name="parent_phone" type="tel" autocomplete="tel">
           </div>
         </div>
       </fieldset>
 
-      <fieldset>
+      <!-- 2) Position & style -->
+      <fieldset id="fieldset-position">
         <legend>2) Poste & style / Position & Style</legend>
+
         <div class="grid">
-          <div class="col-6">
+          <div>
             <label>Position principale / Primary position <span class="req">*</span></label>
-            <div class="check-row">
+            <div class="check-row" aria-label="Primary position">
               <label class="check"><input type="radio" name="primary_position" value="Forward" required> Avant / Forward</label>
-              <label class="check"><input type="radio" name="primary_position" value="Defence" required> Défenseur / Defence</label>
+              <label class="check"><input type="radio" name="primary_position" value="Defence" required> Défense / Defence</label>
               <label class="check"><input type="radio" name="primary_position" value="Center" required> Centre / Center</label>
               <label class="check"><input type="radio" name="primary_position" value="Goaler" required> Gardien / Goaler</label>
             </div>
           </div>
-          <div class="col-6">
+
+          <div>
             <label>Position secondaire / Secondary position</label>
-            <div class="check-row">
+            <div class="check-row" aria-label="Secondary position">
               <label class="check"><input type="radio" name="secondary_position" value="Forward"> Avant / Forward</label>
-              <label class="check"><input type="radio" name="secondary_position" value="Defence"> Défenseur / Defence</label>
+              <label class="check"><input type="radio" name="secondary_position" value="Defence"> Défense / Defence</label>
               <label class="check"><input type="radio" name="secondary_position" value="Center"> Centre / Center</label>
               <label class="check"><input type="radio" name="secondary_position" value="Goaler"> Gardien / Goaler</label>
               <label class="check"><input type="radio" name="secondary_position" value="None" checked> Aucune / None</label>
             </div>
           </div>
-          <div class="col-6">
-            <label>Côté / Side</label>
-            <div class="check-row">
-              <label class="check"><input type="radio" name="side_lr" value="Right"> Droite / Right</label>
-              <label class="check"><input type="radio" name="side_lr" value="Left"> Gauche / Left</label>
+
+          <div>
+            <label>Côté / Side <span class="req">*</span></label>
+            <div class="check-row" aria-label="Side (L/R)">
+              <label class="check"><input type="checkbox" name="side_right" value="Yes"> Droite / Right</label>
+              <label class="check"><input type="checkbox" name="side_left"  value="Yes"> Gauche / Left</label>
             </div>
           </div>
-          <div class="col-12">
+
+          <div class="input-container">
             <label for="player_style">Style de joueur / Player style</label>
-            <input type="text" id="player_style" name="player_style" placeholder="ex: offensif, rapide, physique / offensive, fast, physical…" />
+            <input id="player_style" name="player_style" type="text">
           </div>
-          <div class="col-12">
-            <label for="video_links">Liens vidéo (YouTube, Instagram, LiveBarn…) / Video links</label>
-            <input type="text" id="video_links" name="video_links" placeholder="https://... ; https://..." />
+
+          <div class="input-container">
+            <label for="video_links">Liens vidéo / Video links</label>
+            <textarea id="video_links" name="video_links"></textarea>
           </div>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>3) Chandail / Jersey</legend>
+      <!-- 3) Availability (data-driven) + confidence slider with hand -->
+      <fieldset id="fieldset-availability">
+        <legend>3) Disponibilités / Availability</legend>
+
         <div class="grid">
-          <div class="col-4">
-            <label for="jersey_number_1">Choix #1 / Choice #1</label>
-            <input type="text" id="jersey_number_1" name="jersey_number_1" inputmode="numeric" pattern="[0-9]{1,2}" placeholder="ex: 27" />
-          </div>
-          <div class="col-4">
-            <label for="jersey_number_2">Choix #2 / Choice #2</label>
-            <input type="text" id="jersey_number_2" name="jersey_number_2" inputmode="numeric" pattern="[0-9]{1,2}" placeholder="ex: 88" />
-          </div>
-          <div class="col-4">
-            <label for="jersey_number_3">Choix #3 / Choice #3</label>
-            <input type="text" id="jersey_number_3" name="jersey_number_3" inputmode="numeric" pattern="[0-9]{1,2}" placeholder="ex: 13" />
-          </div>
-          <div class="col-6">
-            <label>Type de chandail / Jersey type</label>
-            <div class="check-row">
-              <label class="check"><input type="radio" name="jersey_type" value="Loaned" checked> Prêté / Loaned</label>
-              <label class="check"><input type="radio" name="jersey_type" value="Customized"> Personnalisé / Customized</label>
+          <div class="muted">Aucun paiement maintenant / No payment now.</div>
+
+          <!-- Template for availability rows -->
+          <template id="tpl_avail_row">
+            <div class="avail-row">
+              <div class="muted avail-title"></div>
+              <div class="muted avail-info"></div>
+              <div class="check-row" aria-label="Availability">
+                <label class="check"><input type="radio" value="Yes"> Oui / Yes</label>
+                <label class="check"><input type="radio" value="No"> Non / No</label>
+                <label class="check"><input type="radio" value="TBD"> À confirmer / TBD</label>
+              </div>
             </div>
-            <div class="muted small" style="margin-top:8px">
-              <strong>Note :</strong> Des <u>frais supplémentaires</u> seront demandés pour un <strong>chandail personnalisé</strong> (nom & numéro). / Additional fee applies for custom jersey (name & number).
+          </template>
+
+          <div id="availability_list"></div>
+
+          <!-- Confidence slider (keep hand-hint) -->
+          <div class="input-container">
+            <label for="confidence_pct">Confiance / Confidence (≥ 80%)</label>
+            <div class="slider-container" id="confidenceSlider">
+              <input type="range" id="confidence_pct" name="confidence_pct" min="80" max="100" value="80"
+                     aria-label="Confidence percent" aria-valuemin="80" aria-valuemax="100" aria-valuenow="80">
+              <div class="hand-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5 9.5V7.5c0-1.1-.9-2-2-2s-2 .9-2 2v2m8 0V7.5c0-1.1-.9-2-2-2s-2 .9-2 2v2m8 0V7.5c0-1.1-.9-2-2-2s-2 .9-2 2v2M6.5 9.5v1c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-1m-8 3v2a2 2 0 0 0 4 0v-2"/>
+                </svg>
+              </div>
             </div>
-          </div>
-          <div class="col-6">
-            <label for="jersey_size">Taille / Size</label>
-            <select id="jersey_size" name="jersey_size">
-              <option>YS</option><option>YM</option><option>YL</option><option>AS</option><option>AM</option><option>AL</option><option>AXL</option>
-            </select>
+            <div class="confidence-display">
+              <span class="muted">Valeur / Value:</span>
+              <span class="confidence-value" id="confVal">80%</span>
+            </div>
           </div>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>4) Disponibilités par tournoi / Tournament availability</legend>
+      <!-- 4) Confirmations -->
+      <fieldset id="fieldset-confirmations">
+        <legend>4) Confirmations</legend>
         <div class="grid">
-          <div class="col-12 muted">
-            Formulaire d’intérêt (constitution d’alignements) — aucun paiement maintenant. / Interest form (lineup building) — no payment now.
-          </div>
+          <label class="check"><input type="checkbox" name="ack_limited_spots" required> Places limitées / Limited spots <span class="req">*</span></label>
+          <label class="check"><input type="checkbox" name="consent_contact" required> J'accepte d'être contacté / I agree to be contacted <span class="req">*</span></label>
 
-          <div class="col-12">
-            <label class="muted"><strong>Boston Showdown</strong> — 29–31 mai 2026 — Boston, MA — <span class="price">≈ 150 $ CAD / player</span></label>
-            <div class="check-row">
-              <label class="check"><input type="radio" name="boston_showdown" value="Yes"> Oui / Yes</label>
-              <label class="check"><input type="radio" name="boston_showdown" value="No"> Non / No</label>
-              <label class="check"><input type="radio" name="boston_showdown" value="TBD" checked> À confirmer / To confirm</label>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <label class="muted"><strong>Montreal Meltdown</strong> — 5–7 juin 2026 — Montréal, QC — <span class="price">≈ 150 $ CAD / player</span></label>
-            <div class="check-row">
-              <label class="check"><input type="radio" name="montreal_meltdown" value="Yes"> Oui / Yes</label>
-              <label class="check"><input type="radio" name="montreal_meltdown" value="No"> Non / No</label>
-              <label class="check"><input type="radio" name="montreal_meltdown" value="TBD" checked> À confirmer / To confirm</label>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <label class="muted"><strong>The Throne</strong> — 24–26 juillet 2026 — Toronto, ON — <span class="price">≈ 250 $ CAD / player</span></label>
-            <div class="check-row">
-              <label class="check"><input type="radio" name="the_throne" value="Yes"> Oui / Yes</label>
-              <label class="check"><input type="radio" name="the_throne" value="No"> Non / No</label>
-              <label class="check"><input type="radio" name="the_throne" value="TBD" checked> À confirmer / To confirm</label>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <label for="confidence_pct">Indice de confiance global (≥ 80 %) / Global commitment confidence (≥ 80%)</label>
-            <input type="range" id="confidence_pct" name="confidence_pct" min="80" max="100" value="80" oninput="document.getElementById('confVal').innerText=this.value+'%';" />
-            <div class="muted">Valeur / Value: <span id="confVal">80%</span></div>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>5) Confirmations / Acknowledgements</legend>
-        <div class="grid">
-          <div class="col-12 row small">
-            <label class="check"><input type="checkbox" name="ack_throne_rule" required>
-              Je comprends que si je participe à The Throne, je dois faire au moins un des deux autres tournois (Boston ou Meltdown). / I understand the Throne rule.
-              <span class="req">*</span></label>
-          </div>
-          <div class="col-12 row small">
-            <label class="check"><input type="checkbox" name="ack_limited_spots" required>
-              Je comprends que les places sont limitées et que le staff optimisera les trios/duos. / I understand limited spots and staff optimization.
-              <span class="req">*</span></label>
-          </div>
-          <div class="col-12 row small">
-            <label class="check"><input type="checkbox" name="consent_contact" required>
-              J’accepte d’être contacté(e) par Québec HC pour finaliser ma participation. / I agree to be contacted by Québec HC.
-              <span class="req">*</span></label>
+          <div class="disclaimer-bottom">
+            Coûts additionnels : chandails et assurances.<br/>
+            Additional costs: jerseys and insurance.
           </div>
         </div>
       </fieldset>
 
       <div class="submit">
-        <button type="reset" class="outline">Réinitialiser / Reset</button>
-        <button type="submit">Soumettre / Submit</button>
+        <button type="reset" class="outline">Effacer / Clear</button>
+        <button type="submit" id="submitBtn">Soumettre / Submit</button>
       </div>
     </form>
   </main>
 
-  <footer>
-    <div>© Québec HC — Spring 2026</div>
-  </footer>
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
 
-  <script>
-    (function(){
-      const form = document.getElementById('qhc-form');
-      form.addEventListener('submit', function(e){
-        const conf = document.getElementById('confidence_pct');
-        if (conf && parseInt(conf.value,10) < 80) {
-          e.preventDefault();
-          alert('L\\'indice de confiance doit être au moins 80%. / Confidence must be at least 80%.');
-          return;
-        }
-        if(!form.checkValidity()){
-          e.preventDefault();
-          alert('Merci de compléter les champs requis. / Please complete required fields.');
-        }
-      }, false);
-    })();
-  </script>
+  <!-- Spiderfy (optional) -->
+  <script src="https://unpkg.com/overlapping-marker-spiderfier-leaflet@0.3.3/oms.min.js"></script>
+
+  <!-- App -->
+  <script src="assets/app.js" defer></script>
 </body>
 </html>
+
+

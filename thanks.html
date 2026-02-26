@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Merci • Thank you — Québec HC Élite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1020">
+
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#0e152a; --panel2:#0a1020;
+      --text:#e7ecf3; --muted:#a7b3c7;
+      --accent:#d4af37; --accent2:#3b82f6;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 500px at 10% -10%, #0b2451 0, transparent 60%),
+        linear-gradient(180deg,#0a1020,#0b1222);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+    .wrap{
+      width:min(980px,94%);
+      background:linear-gradient(180deg,#0a1020,#0e152a);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      padding:28px;
+    }
+    .head{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+    .logo{
+      width:72px;height:72px;border-radius:18px;overflow:hidden;
+      background:#0b1020;box-shadow:0 10px 28px rgba(0,0,0,.35);
+      display:grid;place-items:center;flex:0 0 auto
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+    h1{margin:0;font-size:clamp(1.5rem,1rem + 2vw,2.2rem)}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    .card{
+      background:linear-gradient(180deg,#0a1020,#0f162a);
+      border:1px solid rgba(255,255,255,.08);
+      padding:18px;
+      border-radius:14px
+    }
+    .card h2{margin:0 0 10px}
+    .disclaimer{
+      margin-top:14px;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:#dfe7ff;
+      line-height:1.45;
+    }
+    .disclaimer strong{color:#fff}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px}
+    .btn{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:800;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#fff;
+      box-shadow:0 10px 24px rgba(59,130,246,.28)
+    }
+    .btn.ghost{
+      border:1px solid rgba(255,255,255,.2);
+      color:#fff
+    }
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:12px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      color:#dfe7ff;
+      font-size:.95rem
+    }
+    ul{margin:10px 0 0 18px}
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="head">
+      <div class="logo">
+        <!-- Try common formats (no JS needed) -->
+        <img
+  src="logos/qhc.png"
+  alt="Logo Québec HC"
+  onerror="if(!this.dataset.f){this.dataset.f='1';this.src='logos/qhc.jpg';}
+           else if(this.dataset.f==='1'){this.dataset.f='2';this.src='logos/qhc.webp';}
+           else if(this.dataset.f==='2'){this.dataset.f='3';this.src='logos/QHC.png';}
+           else if(this.dataset.f==='3'){this.dataset.f='4';this.src='logos/QHC.jpg';}
+           else{this.onerror=null; this.src='logos/_placeholder.svg';}"
+/>
+      </div>
+      <div>
+        <h1>Merci • Thank you!</h1>
+        <div class="muted">Québec HC Élite — Formulaire d’intérêt / Interest Form</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>FR</h2>
+        <p>Merci — nous avons bien reçu votre formulaire d’intérêt.</p>
+        <p>Notre équipe utilise ces informations pour :</p>
+        <ul>
+          <li>planifier la saison (tournois et camps),</li>
+          <li>évaluer les besoins par année et par niveau,</li>
+          <li>préparer les alignements potentiels par événement.</li>
+        </ul>
+
+        <div class="disclaimer">
+          <strong>Important</strong> : ce formulaire est <strong>informatif</strong> et <strong>n’engage à rien</strong> (aucune garantie de place, aucun paiement).<br>
+          <strong>Seuls les joueurs sélectionnés</strong> seront contactés pour les prochaines étapes (confirmation, modalités, coûts, logistique).<br><br>
+          <span class="muted">Des coûts additionnels peuvent s’appliquer selon les événements (ex. chandails, assurances, déplacements, etc.).</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>EN</h2>
+        <p>Thank you — we have received your interest form.</p>
+        <p>We use this information to:</p>
+        <ul>
+          <li>plan the season (tournaments and camps),</li>
+          <li>estimate needs by birth year and level,</li>
+          <li>prepare potential line combinations per event.</li>
+        </ul>
+
+        <div class="disclaimer">
+          <strong>Important</strong>: this form is <strong>informational only</strong> and <strong>does not commit you to anything</strong> (no guaranteed spot, no payment).<br>
+          <strong>Only selected players</strong> will be contacted for next steps (confirmation, details, costs, logistics).<br><br>
+          <span class="muted">Additional costs may apply depending on events (e.g., jerseys, insurance, travel, etc.).</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="cta">
+      <span class="pill">Ref: <strong>QHC-INT-SUBMIT</strong></span>
+      <a class="btn primary" href="index.html">← Retour / Back to form</a>
+    </div>
+  </main>
+</body>
+</html>
+

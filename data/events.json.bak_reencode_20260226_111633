@@ -1,0 +1,136 @@
+﻿{
+    "meta":  {
+                 "program_title_fr":  "QuÃ©bec HC Ã‰lite 2026",
+                 "form_title_fr":  "Formulaire dâ€™intÃ©rÃªt",
+                 "form_title_en":  "Interest Form",
+                 "disclaimer_fr":  "CoÃ»ts additionnels : chandails et assurances.",
+                 "disclaimer_en":  "Additional costs: jerseys and insurance.",
+                 "default_currency":  "CAD",
+                 "category":  "boys"
+             },
+    "events":  [
+                   {
+                       "id":  "bluechip",
+                       "type":  "tournament",
+                       "title_fr":  "CCM Blue Chip Invite",
+                       "title_en":  "CCM Blue Chip Invite",
+                       "start_date":  "2026-05-15",
+                       "end_date":  "2026-05-17",
+                       "season":  "spring",
+                       "region":  "na",
+                       "years":  [
+                                     2014,
+                                     2017
+                                 ],
+                       "level":  "elite",
+                       "city":  "Boston",
+                       "country":  "USA",
+                       "logo":  "bluechip",
+                       "source_url":  "https://200x85.com/event/ccm-blue-chip-invite/",
+                       "player_price":  "TBD",
+                       "currency":  "CAD",
+                       "lat":  42.3601,
+                       "lng":  -71.0589,
+                       "availability_field":  "boston_showdown"
+                   },
+                   {
+                       "id":  "beantown",
+                       "type":  "tournament",
+                       "title_fr":  "Beantown Bash",
+                       "title_en":  "Beantown Bash",
+                       "start_date":  "2026-05-29",
+                       "end_date":  "2026-05-31",
+                       "season":  "spring",
+                       "region":  "na",
+                       "years":  [
+                                     2013
+                                 ],
+                       "level":  "elite",
+                       "city":  "Boston",
+                       "country":  "USA",
+                       "logo":  "Beantown",
+                       "source_url":  "https://cwenchnextgenseries.com/events/beantown-bash",
+                       "player_price":  "TBD",
+                       "currency":  "CAD",
+                       "lat":  42.3601,
+                       "lng":  -71.0589,
+                       "availability_field":  "beantown_bash"
+                   },
+                   {
+                       "id":  "meltdown",
+                       "type":  "tournament",
+                       "title_fr":  "MontrÃ©al Meltdown",
+                       "title_en":  "MontrÃ©al Meltdown",
+                       "start_date":  "2026-06-05",
+                       "end_date":  "2026-06-07",
+                       "season":  "summer",
+                       "region":  "na",
+                       "years":  [
+                                     2014
+                                 ],
+                       "level":  "elite",
+                       "city":  "MontrÃ©al",
+                       "country":  "Canada",
+                       "logo":  "meltdown",
+                       "source_url":  "https://cwenchnextgenseries.com/#events",
+                       "player_price":  "TBD",
+                       "currency":  "CAD",
+                       "lat":  45.5017,
+                       "lng":  -73.5673,
+                       "availability_field":  "montreal_meltdown"
+                   },
+                   {
+                       "id":  "jaypeak",
+                       "type":  "tournament",
+                       "title_fr":  "Jay Peak â€” Green Mountain Cup",
+                       "title_en":  "Jay Peak â€” Green Mountain Cup",
+                       "start_date":  "2026-06-11",
+                       "end_date":  "2026-06-14",
+                       "season":  "summer",
+                       "region":  "na",
+                       "years":  [
+                                     2015,
+                                     2016
+                                 ],
+                       "level":  "elite",
+                       "city":  "Jay Peak",
+                       "country":  "USA",
+                       "logo":  "JayPeak",
+                       "source_url":  "https://cwenchnextgenseries.com/#events",
+                       "player_price":  "TBD",
+                       "currency":  "CAD",
+                       "lat":  44.9439,
+                       "lng":  -72.5059,
+                       "availability_field":  "jay_peak"
+                   },
+                   {
+                       "id":  "throne",
+                       "type":  "tournament",
+                       "title_fr":  "The Throne",
+                       "title_en":  "The Throne",
+                       "start_date":  "2026-07-24",
+                       "end_date":  "2026-07-26",
+                       "season":  "summer",
+                       "region":  "na",
+                       "years":  [
+                                     2013,
+                                     2014,
+                                     2015,
+                                     2016,
+                                     2017,
+                                     2018,
+                                     2019
+                                 ],
+                       "level":  "elite",
+                       "city":  "Toronto",
+                       "country":  "Canada",
+                       "logo":  "throne",
+                       "source_url":  "https://phdbestofbest.com/the-throne/",
+                       "player_price":  "TBD",
+                       "currency":  "CAD",
+                       "lat":  43.6532,
+                       "lng":  -79.3832,
+                       "availability_field":  "the_throne"
+                   }
+               ]
+}
