@@ -32,11 +32,7 @@
                        "currency":  "CAD",
                        "lat":  42.3601,
                        "lng":  -71.0589,
-                       "availability_field":  "boston_showdown",
-                       "capacity":  {
-                                        "2015":  "limited",
-                                        "2014":  "full"
-                                    }
+                       "availability_field":  "boston_showdown"
                    },
                    {
                        "id":  "beantown",
@@ -59,10 +55,7 @@
                        "currency":  "CAD",
                        "lat":  42.3601,
                        "lng":  -71.0589,
-                       "availability_field":  "beantown_bash",
-                       "capacity":  {
-
-                                    }
+                       "availability_field":  "beantown_bash"
                    },
                    {
                        "id":  "meltdown",
@@ -85,10 +78,7 @@
                        "currency":  "CAD",
                        "lat":  45.5017,
                        "lng":  -73.5673,
-                       "availability_field":  "montreal_meltdown",
-                       "capacity":  {
-                                        "2014":  "full"
-                                    }
+                       "availability_field":  "montreal_meltdown"
                    },
                    {
                        "id":  "jaypeak",
@@ -112,11 +102,7 @@
                        "currency":  "CAD",
                        "lat":  44.9439,
                        "lng":  -72.5059,
-                       "availability_field":  "jay_peak",
-                       "capacity":  {
-                                        "2015":  "limited",
-                                        "2014":  "limited"
-                                    }
+                       "availability_field":  "jay_peak"
                    },
                    {
                        "id":  "throne",
@@ -145,10 +131,7 @@
                        "currency":  "CAD",
                        "lat":  43.6532,
                        "lng":  -79.3832,
-                       "availability_field":  "the_throne",
-                       "capacity":  {
-
-                                    }
+                       "availability_field":  "the_throne"
                    }
                ]
 }

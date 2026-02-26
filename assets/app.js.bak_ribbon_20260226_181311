@@ -331,9 +331,7 @@ const bJ = node.querySelector(".badge-j");
       const bDate = node.querySelector(".badge-date");
       const bExtra = node.querySelector(".badge-extra");
 
-      
-      const ribbon = node.querySelector(".ribbon");
-const title = ev.title_fr || ev.id;
+      const title = ev.title_fr || ev.id;
       link.href = ev.source_url || "#";
       link.title = title;
 
@@ -368,27 +366,7 @@ const title = ev.title_fr || ev.id;
         bExtra.style.display = "none";
       }
 
-      
-
-      // Capacity per selected year: capacity[YYYY] = "full" | "limited"
-      if(ribbon){
-        ribbon.classList.remove("full","limited");
-        ribbon.style.display = "none";
-
-        const y = (state.year || "").trim();
-        const cap = (ev.capacity && y && ev.capacity[y]) ? ev.capacity[y] : null;
-        const st = (cap || "").toString().toLowerCase().trim();
-
-        if(st === "full"){
-          ribbon.style.display = "";
-          ribbon.textContent = "COMPLET • FULL";
-          ribbon.classList.add("full");
-        } else if(st === "limited"){
-          ribbon.style.display = "";
-          ribbon.textContent = "PLACES LIMITÉES • LIMITED";
-          ribbon.classList.add("limited");
-        }
-      }els.list.appendChild(node);
+      els.list.appendChild(node);
     });
 
     updatePaginationUI(info);
@@ -731,7 +709,6 @@ const title = ev.title_fr || ev.id;
 
   document.addEventListener("DOMContentLoaded", init);
 })();
-
 
 
 
