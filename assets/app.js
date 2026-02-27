@@ -168,7 +168,7 @@
   const state = {
     year: "",
     level: "",
-    includeTravel: false,
+    includeTravel: true,
     view: "list",
     page: 1
   };
@@ -354,7 +354,8 @@ const title = ev.title_fr || ev.id;
           bLevel.textContent = "ÉLITE";
           bLevel.classList.add("elite");
         }
-      }const jtxt = badgeJ(ev.start_date);
+      }
+      const jtxt = badgeJ(ev.start_date);
       bJ.textContent = jtxt || "";
       bDate.textContent = dateBadge(ev);
 
@@ -370,25 +371,37 @@ const title = ev.title_fr || ev.id;
 
       
 
-      // Capacity per selected year: capacity[YYYY] = "full" | "limited"
+            // Ribbon priority (only one can show):
+      // 1) FULL, 2) LIMITED, 3) COLLAB, 4) none
       if(ribbon){
-        ribbon.classList.remove("full","limited");
+        ribbon.classList.remove("full","limited","collab");
         ribbon.style.display = "none";
 
         const y = (state.year || "").trim();
-        const cap = (ev.capacity && y && ev.capacity[y]) ? ev.capacity[y] : null;
-        const st = (cap || "").toString().toLowerCase().trim();
+        const capRaw = (ev.capacity && y && ev.capacity[y]) ? ev.capacity[y] : null;
+        const cap = (capRaw || "").toString().toLowerCase().trim();
 
-        if(st === "full"){
+        if(cap === "full"){
           ribbon.style.display = "";
           ribbon.textContent = "COMPLET • FULL";
           ribbon.classList.add("full");
-        } else if(st === "limited"){
+        } else if(cap === "limited"){
           ribbon.style.display = "";
           ribbon.textContent = "PLACES LIMITÉES • LIMITED";
           ribbon.classList.add("limited");
+        } else if(ev.collab === true){
+          ribbon.style.display = "";
+          ribbon.textContent = "EN COLLABORATION • IN COLLABORATION";
+          ribbon.classList.add("collab");
+        } else {
+          ribbon.style.display = "none";
         }
-      }els.list.appendChild(node);
+      
+      
+      }
+      
+      els.list.appendChild(node);
+
     });
 
     updatePaginationUI(info);
@@ -639,7 +652,9 @@ const title = ev.title_fr || ev.id;
     els.yearChips = $("#year_chips");
     els.levelChips = $("#level_chips");
     els.travelToggle = $("#travel_toggle");
-    els.vtList = $("#vt_list");
+    
+    els.travelToggle.checked = true;
+els.vtList = $("#vt_list");
     els.vtMap = $("#vt_map");
     els.list = $("#events_list");
     els.tplCard = $("#tpl_event_card");
@@ -731,6 +746,13 @@ const title = ev.title_fr || ev.id;
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+
+
+
+
+
+
+
 
 
 

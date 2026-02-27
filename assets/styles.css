@@ -511,3 +511,22 @@ button:hover{transform:translateY(-2px)}
   padding:8px 0 !important;
   transform:rotate(33deg) !important; /* tiny adjustment */
 }
+
+/* Ribbon style for collaboration */
+.ribbon.collab{
+  background:rgba(255,255,255,.10);
+  color:#eaf2ff;
+  border-color:rgba(255,255,255,.18);
+}
+
+/* Move special icon (✈️ / 🏕️) under the season icon to avoid ribbon overlap */
+.badge-extra{
+  top:54px !important;     /* under season icon */
+  left:12px !important;
+  bottom:auto !important;
+  right:auto !important;
+  width:40px !important;
+  padding:0 !important;
+  border-radius:12px !important;
+  font-size:1.05rem !important;
+}
