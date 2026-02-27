@@ -36,7 +36,8 @@
                        "capacity":  {
                                         "2015":  "limited",
                                         "2014":  "full"
-                                    }
+                                    },
+                       "collab":  false
                    },
                    {
                        "id":  "beantown",
@@ -62,7 +63,8 @@
                        "availability_field":  "beantown_bash",
                        "capacity":  {
 
-                                    }
+                                    },
+                       "collab":  false
                    },
                    {
                        "id":  "meltdown",
@@ -88,7 +90,8 @@
                        "availability_field":  "montreal_meltdown",
                        "capacity":  {
                                         "2014":  "full"
-                                    }
+                                    },
+                       "collab":  false
                    },
                    {
                        "id":  "jaypeak",
@@ -116,7 +119,8 @@
                        "capacity":  {
                                         "2015":  "limited",
                                         "2014":  "limited"
-                                    }
+                                    },
+                       "collab":  false
                    },
                    {
                        "id":  "throne",
@@ -148,7 +152,55 @@
                        "availability_field":  "the_throne",
                        "capacity":  {
 
-                                    }
+                                    },
+                       "collab":  false
+                   },
+                   {
+                       "id":  "paris",
+                       "type":  "tournament",
+                       "title_fr":  "International Summer Series — Paris",
+                       "start_date":  "2026-07-17",
+                       "end_date":  "2026-07-26",
+                       "season":  "summer",
+                       "region":  "travel",
+                       "years":  [
+                                     2014,
+                                     2015
+                                 ],
+                       "level":  "both",
+                       "city":  "Paris",
+                       "country":  "France",
+                       "logo":  "paris",
+                       "source_url":  "https://www.prohoc.com/content/EURO-SUMMER---2015-AAA-BOYS-PARIS",
+                       "player_price":  "TBD",
+                       "currency":  "CAD",
+                       "availability_field":  "paris_international_summer_series",
+                       "lat":  48.8566,
+                       "lng":  2.3522,
+                       "collab":  true
+                   },
+                   {
+                       "id":  "nashville",
+                       "type":  "tournament",
+                       "title_fr":  "Music City Invitational — Nashville",
+                       "start_date":  "2026-04-16",
+                       "end_date":  "2026-04-19",
+                       "season":  "spring",
+                       "region":  "na",
+                       "years":  [
+                                     2015
+                                 ],
+                       "level":  "both",
+                       "city":  "Nashville",
+                       "country":  "USA",
+                       "logo":  "nashville",
+                       "source_url":  "https://cwenchnextgenseries.com/events/music-city-invitational",
+                       "player_price":  "TBD",
+                       "currency":  "CAD",
+                       "availability_field":  "music_city_invitational_nashville",
+                       "lat":  36.1627,
+                       "lng":  -86.7816,
+                       "collab":  true
                    }
                ]
 }
