@@ -618,36 +618,111 @@ const title = ev.title_fr || ev.id;
 
   // businessOk
   window.businessOk = function(){
-    const form = els.form || $("#qhc-form");
-    if(!form) return true;
+  const form = els.form || document.querySelector("#qhc-form");
+  if(!form) return true;
 
-    if(!form.checkValidity()){
-      form.reportValidity();
-      return false;
+  const summary = document.getElementById("form_error_summary");
+
+  const clearUI = () => {
+    if(summary){
+      summary.style.display = "none";
+      summary.innerHTML = "";
     }
-
-    const conf = parseInt(els.conf ? els.conf.value : "0", 10);
-    if(isNaN(conf) || conf < 80){
-      alert("Confiance ≥ 80 % / Confidence ≥ 80%.");
-      return false;
-    }
-
-    const primary = form.querySelector('input[name="primary_position"]:checked')?.value || "";
-    const isGoalie = (primary||"").toLowerCase().includes("goal");
-    if(!isGoalie){
-      const right = form.querySelector('[name="side_right"]')?.checked;
-      const left  = form.querySelector('[name="side_left"]')?.checked;
-      if(!right && !left){
-        alert("Sélectionnez au moins un côté (Droit/Gauche). / Select at least one side.");
-        return false;
-      }
-    }
-
-    syncEmailAlias();
-    return true;
+    document.querySelectorAll(".input-container.is-invalid").forEach(el => el.classList.remove("is-invalid","is-shake"));
+    document.querySelectorAll("fieldset.is-invalid").forEach(el => el.classList.remove("is-invalid","is-shake"));
   };
 
-  // ---------- Boot ----------
+  const showSummary = (items) => {
+    if(!summary) return;
+    const fr = "Veuillez corriger les champs suivants :";
+    const en = "Please fix the following fields:";
+    const li = items.map(t => `<li>${t}</li>`).join("");
+    summary.innerHTML = `<strong>${fr}</strong><br><strong>${en}</strong><ul>${li}</ul>`;
+    summary.style.display = "";
+    summary.scrollIntoView({behavior:"smooth", block:"start"});
+  };
+
+  const labelOf = (el) => {
+    if(el && el.id){
+      const lab = document.querySelector(`label[for="${el.id}"]`);
+      if(lab) return lab.textContent.replace("*","").trim();
+    }
+    return (el && el.name) ? el.name : "Champ requis / Required field";
+  };
+
+  clearUI();
+
+  const errors = [];
+  let firstFocus = null;
+
+  // 1) Native validity for controls
+  const fields = Array.from(form.querySelectorAll("input, select, textarea")).filter(el => el.willValidate);
+  for(const el of fields){
+    if(el.checkValidity()) continue;
+
+    const container = el.closest(".input-container") || el.closest("fieldset") || el.parentElement;
+    if(container && container.classList){
+      if(container.classList.contains("input-container")) container.classList.add("is-invalid");
+      else if(container.tagName === "FIELDSET") container.classList.add("is-invalid");
+    }
+
+    const label = labelOf(el);
+    let msg = label;
+
+    if(el.validity.valueMissing) msg = `${label} — requis / required`;
+    else if(el.validity.typeMismatch) msg = `${label} — invalide / invalid`;
+    else msg = `${label} — invalide / invalid`;
+
+    errors.push(msg);
+    if(!firstFocus) firstFocus = el;
+  }
+
+  // 2) Primary position required
+  const primary = form.querySelector('input[name="primary_position"]:checked')?.value || "";
+  if(!primary){
+    errors.push("Position principale — requis / Primary position — required");
+    const fs = document.getElementById("fieldset-position");
+    if(fs) fs.classList.add("is-invalid");
+    if(!firstFocus) firstFocus = form.querySelector('input[name="primary_position"]') || firstFocus;
+  }
+
+  // 3) Side required except goalie
+  const isGoalie = (primary||"").toLowerCase().includes("goal");
+  if(!isGoalie){
+    const right = form.querySelector('[name="side_right"]')?.checked;
+    const left  = form.querySelector('[name="side_left"]')?.checked;
+    if(!right && !left){
+      errors.push("Côté (Droit/Gauche) — requis / Side (Right/Left) — required");
+      const fs = document.getElementById("fieldset-position");
+      if(fs) fs.classList.add("is-invalid");
+      if(!firstFocus) firstFocus = form.querySelector('[name="side_right"]') || form.querySelector('[name="side_left"]') || firstFocus;
+    }
+  }
+
+  // 4) Confidence >= 80
+  const conf = parseInt(els.conf ? els.conf.value : "0", 10);
+  if(isNaN(conf) || conf < 80){
+    errors.push("Confiance ≥ 80% — requis / Confidence ≥ 80% — required");
+    const fs = document.getElementById("fieldset-availability");
+    if(fs) fs.classList.add("is-invalid");
+    if(!firstFocus) firstFocus = document.getElementById("confidence_pct");
+  }
+
+  if(errors.length){
+    showSummary(errors);
+    if(firstFocus){
+      const c = firstFocus.closest(".input-container") || firstFocus.closest("fieldset");
+      if(c) c.classList.add("is-shake");
+      firstFocus.focus({preventScroll:true});
+      firstFocus.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+    return false;
+  }
+
+  // Keep selected email alias fresh
+  if(typeof syncEmailAlias === "function") syncEmailAlias();
+  return true;
+};// ---------- Boot ----------
   async function init(){
     els.yearChips = $("#year_chips");
     els.levelChips = $("#level_chips");
@@ -767,6 +842,8 @@ els.vtList = $("#vt_list");
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+
+
 
 
 
