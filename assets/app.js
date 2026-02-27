@@ -616,113 +616,129 @@ const title = ev.title_fr || ev.id;
     els.emailAlias.value = (els.parentEmail.value||"").trim();
   }
 
-  // businessOk
+  
+
+  // businessOk (iOS-safe): clear summary + highlights; no reportValidity()
   window.businessOk = function(){
-  const form = els.form || document.querySelector("#qhc-form");
-  if(!form) return true;
+    const form = document.querySelector("#qhc-form");
+    if(!form) return true;
 
-  const summary = document.getElementById("form_error_summary");
+    const summary = document.getElementById("form_error_summary");
 
-  const clearUI = () => {
-    if(summary){
-      summary.style.display = "none";
-      summary.innerHTML = "";
+    const clearUI = () => {
+      if(summary){
+        summary.style.display = "none";
+        summary.innerHTML = "";
+      }
+      document.querySelectorAll(".input-container.is-invalid").forEach(el => el.classList.remove("is-invalid","is-shake"));
+      document.querySelectorAll("fieldset.is-invalid").forEach(el => el.classList.remove("is-invalid","is-shake"));
+    };
+
+    const showSummary = (items) => {
+      if(!summary) return;
+      const li = items.map(t => `<li>${t}</li>`).join("");
+      summary.innerHTML =
+        `<strong>Veuillez corriger les champs suivants :</strong><br>` +
+        `<strong>Please fix the following fields:</strong>` +
+        `<ul>${li}</ul>`;
+      summary.style.display = "";
+      summary.scrollIntoView({behavior:"smooth", block:"start"});
+    };
+
+    const markInvalid = (el) => {
+      if(!el) return;
+      const c = el.closest(".input-container") || el.closest("fieldset");
+      if(c) c.classList.add("is-invalid");
+    };
+
+    clearUI();
+
+    const errors = [];
+    let firstFocus = null;
+
+    // Required fields (explicit)
+    const reqIds = ["player_name","birth_year","city","parent_email"];
+    for(const id of reqIds){
+      const el = document.getElementById(id);
+      const val = (el && "value" in el) ? (el.value || "").trim() : "";
+      if(!val){
+        const label = document.querySelector(`label[for="${id}"]`)?.textContent?.replace("*","").trim() || id;
+        errors.push(`${label} — requis / required`);
+        markInvalid(el);
+        if(!firstFocus) firstFocus = el;
+      }
     }
-    document.querySelectorAll(".input-container.is-invalid").forEach(el => el.classList.remove("is-invalid","is-shake"));
-    document.querySelectorAll("fieldset.is-invalid").forEach(el => el.classList.remove("is-invalid","is-shake"));
-  };
 
-  const showSummary = (items) => {
-    if(!summary) return;
-    const fr = "Veuillez corriger les champs suivants :";
-    const en = "Please fix the following fields:";
-    const li = items.map(t => `<li>${t}</li>`).join("");
-    summary.innerHTML = `<strong>${fr}</strong><br><strong>${en}</strong><ul>${li}</ul>`;
-    summary.style.display = "";
-    summary.scrollIntoView({behavior:"smooth", block:"start"});
-  };
-
-  const labelOf = (el) => {
-    if(el && el.id){
-      const lab = document.querySelector(`label[for="${el.id}"]`);
-      if(lab) return lab.textContent.replace("*","").trim();
-    }
-    return (el && el.name) ? el.name : "Champ requis / Required field";
-  };
-
-  clearUI();
-
-  const errors = [];
-  let firstFocus = null;
-
-  // 1) Native validity for controls
-  const fields = Array.from(form.querySelectorAll("input, select, textarea")).filter(el => el.willValidate);
-  for(const el of fields){
-    if(el.checkValidity()) continue;
-
-    const container = el.closest(".input-container") || el.closest("fieldset") || el.parentElement;
-    if(container && container.classList){
-      if(container.classList.contains("input-container")) container.classList.add("is-invalid");
-      else if(container.tagName === "FIELDSET") container.classList.add("is-invalid");
-    }
-
-    const label = labelOf(el);
-    let msg = label;
-
-    if(el.validity.valueMissing) msg = `${label} — requis / required`;
-    else if(el.validity.typeMismatch) msg = `${label} — invalide / invalid`;
-    else msg = `${label} — invalide / invalid`;
-
-    errors.push(msg);
-    if(!firstFocus) firstFocus = el;
-  }
-
-  // 2) Primary position required
-  const primary = form.querySelector('input[name="primary_position"]:checked')?.value || "";
-  if(!primary){
-    errors.push("Position principale — requis / Primary position — required");
-    const fs = document.getElementById("fieldset-position");
-    if(fs) fs.classList.add("is-invalid");
-    if(!firstFocus) firstFocus = form.querySelector('input[name="primary_position"]') || firstFocus;
-  }
-
-  // 3) Side required except goalie
-  const isGoalie = (primary||"").toLowerCase().includes("goal");
-  if(!isGoalie){
-    const right = form.querySelector('[name="side_right"]')?.checked;
-    const left  = form.querySelector('[name="side_left"]')?.checked;
-    if(!right && !left){
-      errors.push("Côté (Droit/Gauche) — requis / Side (Right/Left) — required");
+    // Primary position required
+    const primaryEl = form.querySelector('input[name="primary_position"]:checked');
+    const primary = primaryEl ? primaryEl.value : "";
+    if(!primary){
+      errors.push("Position principale — requis / Primary position — required");
       const fs = document.getElementById("fieldset-position");
       if(fs) fs.classList.add("is-invalid");
-      if(!firstFocus) firstFocus = form.querySelector('[name="side_right"]') || form.querySelector('[name="side_left"]') || firstFocus;
+      if(!firstFocus) firstFocus = form.querySelector('input[name="primary_position"]');
     }
-  }
 
-  // 4) Confidence >= 80
-  const conf = parseInt(els.conf ? els.conf.value : "0", 10);
-  if(isNaN(conf) || conf < 80){
-    errors.push("Confiance ≥ 80% — requis / Confidence ≥ 80% — required");
-    const fs = document.getElementById("fieldset-availability");
-    if(fs) fs.classList.add("is-invalid");
-    if(!firstFocus) firstFocus = document.getElementById("confidence_pct");
-  }
-
-  if(errors.length){
-    showSummary(errors);
-    if(firstFocus){
-      const c = firstFocus.closest(".input-container") || firstFocus.closest("fieldset");
-      if(c) c.classList.add("is-shake");
-      firstFocus.focus({preventScroll:true});
-      firstFocus.scrollIntoView({behavior:"smooth", block:"center"});
+    // Side required except goalie
+    const isGoalie = (primary || "").toLowerCase().includes("goal");
+    if(!isGoalie){
+      const right = form.querySelector('[name="side_right"]')?.checked;
+      const left  = form.querySelector('[name="side_left"]')?.checked;
+      if(!right && !left){
+        errors.push("Côté (Droit/Gauche) — requis / Side (Right/Left) — required");
+        const fs = document.getElementById("fieldset-position");
+        if(fs) fs.classList.add("is-invalid");
+        if(!firstFocus) firstFocus = form.querySelector('[name="side_right"]') || form.querySelector('[name="side_left"]');
+      }
     }
-    return false;
-  }
 
-  // Keep selected email alias fresh
-  if(typeof syncEmailAlias === "function") syncEmailAlias();
-  return true;
-};// ---------- Boot ----------
+    // Confidence >= 80
+    const confEl = document.getElementById("confidence_pct");
+    const conf = confEl ? parseInt(confEl.value || "0", 10) : 0;
+    if(!Number.isFinite(conf) || conf < 80){
+      errors.push("Confiance ≥ 80% — requis / Confidence ≥ 80% — required");
+      const fs = document.getElementById("fieldset-availability");
+      if(fs) fs.classList.add("is-invalid");
+      markInvalid(confEl);
+      if(!firstFocus) firstFocus = confEl;
+    }
+
+    // Confirmations required
+    const ack1 = form.querySelector('input[name="ack_limited_spots"]');
+    const ack2 = form.querySelector('input[name="consent_contact"]');
+    if(ack1 && !ack1.checked){
+      errors.push("Places limitées — requis / Limited spots — required");
+      const fs = document.getElementById("fieldset-confirmations");
+      if(fs) fs.classList.add("is-invalid");
+      if(!firstFocus) firstFocus = ack1;
+    }
+    if(ack2 && !ack2.checked){
+      errors.push("Consentement contact — requis / Contact consent — required");
+      const fs = document.getElementById("fieldset-confirmations");
+      if(fs) fs.classList.add("is-invalid");
+      if(!firstFocus) firstFocus = ack2;
+    }
+
+    if(errors.length){
+      showSummary(errors);
+      if(firstFocus){
+        const c = firstFocus.closest(".input-container") || firstFocus.closest("fieldset");
+        if(c) c.classList.add("is-shake");
+        firstFocus.focus({preventScroll:true});
+        firstFocus.scrollIntoView({behavior:"smooth", block:"center"});
+      }
+      return false;
+    }
+
+    // Sync email alias
+    const parentEmail = document.getElementById("parent_email");
+    const emailAlias = document.getElementById("emailAlias");
+    if(parentEmail && emailAlias) emailAlias.value = (parentEmail.value || "").trim();
+
+    return true;
+  };
+
+  // ---------- Boot ----------
   async function init(){
     els.yearChips = $("#year_chips");
     els.levelChips = $("#level_chips");
@@ -842,6 +858,9 @@ els.vtList = $("#vt_list");
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+
+
+
 
 
 
