@@ -672,7 +672,28 @@ els.vtList = $("#vt_list");
     els.tplAvail = $("#tpl_avail_row");
     els.form = $("#qhc-form");
 
-    // pagination UI (inject once)
+    
+    // Submit overlay (show only when businessOk() allows submission)
+    const overlay = document.getElementById("submit_overlay");
+    const submitBtn = document.getElementById("submitBtn");
+
+    if(els.form){
+      els.form.addEventListener("submit", function(e){
+        // businessOk() will run via onsubmit attribute; we call it here too for safety
+        let ok = true;
+        try{ ok = (typeof window.businessOk === "function") ? window.businessOk() : true; }catch(_){ ok = false; }
+
+        if(!ok){
+          // stop if validation fails
+          e.preventDefault();
+          return;
+        }
+
+        // show overlay + disable button
+        if(submitBtn) submitBtn.disabled = true;
+        if(overlay) overlay.style.display = "flex";
+      }, true);
+    }// pagination UI (inject once)
     const listWrap = $("#events_list_wrap");
     els.paginationWrap = document.createElement("div");
     els.paginationWrap.className = "pagination";
@@ -746,6 +767,7 @@ els.vtList = $("#vt_list");
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+
 
 
 
