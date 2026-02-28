@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QHC Admin — Dashboard</title>
+  <link rel="stylesheet" href="https://yaban1981.github.io/QHC_Program/assets/styles.css">
+</head>
+
+<body style="padding:24px">
+
+<div style="max-width:1200px;margin:0 auto">
+
+  <div style="display:flex;gap:14px;align-items:center;margin-bottom:20px">
+    <img alt="Québec HC" src="../logos/qhc.jpg" style="width:60px">
+    <div>
+      <h2 style="margin:0">Dashboard Admin</h2>
+      <div style="opacity:.7">Gestion des joueurs</div>
+    </div>
+    <div style="margin-left:auto">
+      <button onclick="deconnexion()">Déconnexion</button>
+    </div>
+  </div>
+
+  <!-- Filtres -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px">
+    <select id="filtreAnneeNaissance"></select>
+    <select id="filtrePoste">
+      <option value="">Tous postes</option>
+      <option value="Forward">Avant</option>
+      <option value="Defence">Défense</option>
+      <option value="Center">Centre</option>
+      <option value="Goaler">Gardien</option>
+    </select>
+    <input id="recherche" placeholder="Recherche...">
+    <select id="filtreAnneeSoumission"></select>
+  </div>
+
+  <!-- Actions -->
+  <div style="margin-bottom:15px">
+    <button onclick="marquerInteressant()">⭐ Intéressant</button>
+    <button onclick="marquerEcarte()">❌ Écarté</button>
+    <button onclick="supprimerSelection()">🗑️ Supprimer</button>
+    <button onclick="ouvrirModalEmail()">✉️ Email</button>
+  </div>
+
+  <div id="loading">Chargement...</div>
+  <div id="err" style="color:red;margin-bottom:10px"></div>
+
+  <!-- Tableau -->
+  <div id="table-container" style="display:none">
+    <table border="1" width="100%" cellpadding="6" cellspacing="0">
+      <thead id="table-header">
+        <tr>
+          <th><input type="checkbox" id="checkAll"></th>
+          <th>Nom</th>
+          <th>Année</th>
+          <th>Ville</th>
+          <th>Email</th>
+          <th>Poste</th>
+          <th>Confiance</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="./app.js"></script>
+
+</body>
+</html>
+
