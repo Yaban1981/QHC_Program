@@ -587,3 +587,42 @@ button:disabled{
   cursor:not-allowed;
   transform:none !important;
 }
+
+/* Form error summary */
+.form-error-summary{
+  margin-top:16px;
+  padding:14px 14px;
+  border-radius:14px;
+  border:1px solid rgba(239,68,68,.35);
+  background:rgba(239,68,68,.10);
+  color:#fecaca;
+  box-shadow:0 10px 24px rgba(0,0,0,.25);
+}
+.form-error-summary strong{ color:#fff; }
+.form-error-summary ul{ margin:10px 0 0 18px; }
+.form-error-summary li{ margin:6px 0; }
+
+/* Invalid field highlighting */
+.input-container.is-invalid input,
+.input-container.is-invalid select,
+.input-container.is-invalid textarea{
+  border-color: rgba(239,68,68,.85) !important;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.25) !important;
+  background: rgba(239,68,68,.06) !important;
+}
+
+/* Invalid group (radio/checkbox) */
+fieldset.is-invalid{
+  border-color: rgba(239,68,68,.55) !important;
+}
+
+/* Subtle shake for first invalid field */
+@keyframes qhc_shake{
+  0%{transform:translateX(0)}
+  20%{transform:translateX(-2px)}
+  40%{transform:translateX(2px)}
+  60%{transform:translateX(-2px)}
+  80%{transform:translateX(2px)}
+  100%{transform:translateX(0)}
+}
+.is-shake{ animation:qhc_shake .28s ease-in-out 2; }
