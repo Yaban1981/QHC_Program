@@ -1,326 +1,82 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Québec HC Élite 2026</title>
-  <meta name="description" content="Québec HC Élite 2026 — Formulaire d’intérêt / Interest Form" />
-  <meta name="theme-color" content="#0a1020">
-  <meta name="format-detection" content="telephone=no">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>No Labels. Just Performance. — Québec HC</title>
+<meta name="description" content="Québec HC — Elite spring & summer hockey. No Labels. Just Performance. Invitation-only."/>
+<meta name="theme-color" content="#0a1020"/>
+<meta name="format-detection" content="telephone=no">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/styles.css">
+<!-- Social Preview (OpenGraph/Twitter) -->
+<link rel="canonical" href="https://yaban1981.github.io/QHC_Program/home.html" />
+<meta property="og:site_name" content="Québec HC" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yaban1981.github.io/QHC_Program/home.html" />
+<meta property="og:title" content="No Labels. Just Performance." />
+<meta property="og:description" content="Elite spring & summer hockey • Ouvert à tous • Invitation-only group." />
+<meta property="og:image" content="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1836" />
+<meta property="og:image:height" content="2376" />
 
-  <!-- Leaflet CSS (map) -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
-  <!-- Social Preview (OpenGraph/Twitter) -->
-  <link rel="canonical" href="https://yaban1981.github.io/QHC_Program/" />
-  <meta property="og:site_name" content="Québec HC" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yaban1981.github.io/QHC_Program/" />
-  <meta property="og:title" content="Programme 2026" />
-  <meta property="og:description" content="Québec HC Élite — Formulaire d’intérêt" />
-  <meta property="og:image" content="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1582" />
-  <meta property="og:image:height" content="2048" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="No Labels. Just Performance." />
+<meta name="twitter:description" content="Québec HC — Elite spring & summer hockey." />
+<meta name="twitter:image" content="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Programme 2026" />
-  <meta name="twitter:description" content="Québec HC Élite — Formulaire d’intérêt" />
-  <meta name="twitter:image" content="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
+<link rel="apple-touch-icon" href="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
 
-  <link rel="apple-touch-icon" href="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
+<!-- Same CSS as the form -->
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
-  <noscript>
-    <div style="background:#3b82f6;color:#fff;padding:10px;text-align:center">
-      JavaScript requis pour la programmation, la carte et les validations. / JavaScript required for schedule, map and validations.
-    </div>
-  </noscript>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-wrap">
-      <div class="hero-logo">
-        <!-- IMPORTANT: app.js fera le fallback d’extension si besoin -->
-        <img id="hero_logo" src="logos/qhc" alt="Logo Québec HC">
-      </div>
+<header class="hero">
+<div class="home-wrap">
 
-      <div class="hero-text">
-        <h1>Québec HC Élite 2026</h1>
-        <p class="hero-sub">Formulaire d’intérêt / Interest Form</p>
-        <p class="hero-meta">Confiance requise ≥ 80% • Confidence required ≥ 80%</p>
-      </div>
-    </div>
-  </header>
+<div class="panel">
 
-  <!-- PROGRAMMATION -->
-  <section class="program">
-    <div class="program-wrap">
-      <h2 class="program-title">Programmation 2026 / 2026 Program</h2>
-
-      <!-- Filters (chips) -->
-      <div class="filters">
-        <div class="filter-group">
-          <div class="filter-label">Année / Year</div>
-          <div class="chips" id="year_chips" aria-label="Year filter"></div>
-        </div>
-
-        <div class="filter-group">
-          <div class="filter-label">Niveau / Level</div>
-          <div class="chips" id="level_chips" aria-label="Level filter"></div>
-        </div>
-
-        <div class="filter-group filter-toggle">
-          <label class="toggle">
-            <input type="checkbox" id="travel_toggle">
-            <span>Voyage (hors Amérique du Nord) / Travel (outside North America)</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- View toggle -->
-      <div class="view-toggle" role="tablist" aria-label="List or map view">
-        <button type="button" class="vt-btn active" id="vt_list" role="tab" aria-selected="true">Liste / List</button>
-        <button type="button" class="vt-btn" id="vt_map" role="tab" aria-selected="false">Carte / Map</button>
-      </div>
-
-      <!-- LIST container -->
-      <div id="events_list_wrap">
-        <div class="events-grid" id="events_list"></div>
-
-        <!-- Card template (logo + season icon + J-XX + date badge) -->
-        <template id="tpl_event_card">
-          <article class="ecard">
-            <div class="ribbon" style="display:none;"></div>
-            <a class="ecard-link" href="#" target="_blank" rel="noopener">
-              <img class="ecard-logo" src="" alt="">
-            </a>
-
-            <div class="badge badge-season" title="Saison / Season">📅</div>
-            <div class="badge badge-level" title="Niveau / Level"></div>
-            <div class="badge badge-j" title="Jours avant / Days to event">J-—</div>
-            <div class="badge badge-date" title="Dates">—</div>
-
-            <!-- Future: optional icons (✈️ / 🏕️) reserved -->
-            <div class="badge badge-extra" title="Spécial / Special" style="display:none;"></div>
-          </article>
-        </template>
-      </div>
-
-      <!-- MAP container -->
-      <div class="map-wrap" id="map_wrap" style="display:none;">
-        <div id="map" class="map"></div>
-        <div class="map-note">Cliquer un point pour voir l’événement. / Click a marker to view the event.</div>
-      </div>
-
-      <!-- Program messages -->
-      <div class="program-msg" id="program_msg" style="display:none;"></div>
-      <div class="program-error" id="program_error" style="display:none;"></div>
-    </div>
-  </section>
-
-  <!-- FORMULAIRE (Google Apps Script) — on garde la façon d’envoyer inchangée -->
-  <main>
-    <form
-      action="https://script.google.com/macros/s/AKfycbyEPrT951PPcfxRwGVX9lr8JhtdTxYt2pFq5atvwcre_iaeWv4NHkvZFOTAndqKX7ry/exec"
-      method="POST"
-      id="qhc-form"
-      onsubmit="return businessOk()"
-      novalidate>
-
-      <input type="hidden" name="_next" value="https://yaban1981.github.io/QHC_Program/thanks.html">
-      <input type="hidden" id="emailAlias" name="email" value="">
-      <input type="hidden" name="form_version" value="rttt_v1_native_apps_script">
-
-      <!-- 1) Player info -->
-      <fieldset id="fieldset-player">
-        <legend>1) Info joueur / Player Info</legend>
-
-        <div class="grid">
-          <div class="input-container">
-            <label for="player_name">Nom complet / Full name <span class="req">*</span></label>
-            <input id="player_name" name="player_name" type="text" required autocomplete="name">
-          </div>
-
-          <div class="input-container">
-            <label for="birth_year">Année / Year <span class="req">*</span></label>
-            <select id="birth_year" name="birth_year" required>
-              <option value="">— Choisir / Select —</option>
-              <option>2013</option><option>2014</option><option>2015</option><option>2016</option><option>2017</option><option>2018</option><option>2019</option>
-            </select>
-          </div>
-
-          <div class="input-container">
-            <label for="player_level">Niveau / Level</label>
-            <select id="player_level" name="player_level">
-              <option value="">— Choisir / Select —</option>
-              <option value="elite">Élite / Elite</option>
-              <option value="aaa">AAA</option>
-            </select>
-          </div>
-
-          <div class="input-container">
-            <label for="city">Ville / City <span class="req">*</span></label>
-            <input id="city" name="city" type="text" required>
-          </div>
-
-          <div class="input-container">
-            <label for="current_team">Équipe actuelle / Current team</label>
-            <input id="current_team" name="current_team" type="text">
-          </div>
-
-          <div class="input-container">
-            <label for="parent_email">Courriel parent / Parent email <span class="req">*</span></label>
-            <input id="parent_email" name="parent_email" type="email" required autocomplete="email" inputmode="email">
-          </div>
-
-          <div class="input-container">
-            <label for="parent_phone">Téléphone parent / Parent phone</label>
-            <input id="parent_phone" name="parent_phone" type="tel" autocomplete="tel">
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- 2) Position & style -->
-      <fieldset id="fieldset-position">
-        <legend>2) Poste & style / Position & Style</legend>
-
-        <div class="grid">
-          <div>
-            <label>Position principale / Primary position <span class="req">*</span></label>
-            <div class="check-row" aria-label="Primary position">
-              <label class="check"><input type="radio" name="primary_position" value="Forward" required> Avant / Forward</label>
-              <label class="check"><input type="radio" name="primary_position" value="Defence" required> Défense / Defence</label>
-              <label class="check"><input type="radio" name="primary_position" value="Center" required> Centre / Center</label>
-              <label class="check"><input type="radio" name="primary_position" value="Goaler" required> Gardien / Goaler</label>
-            </div>
-          </div>
-
-          <div>
-            <label>Position secondaire / Secondary position</label>
-            <div class="check-row" aria-label="Secondary position">
-              <label class="check"><input type="radio" name="secondary_position" value="Forward"> Avant / Forward</label>
-              <label class="check"><input type="radio" name="secondary_position" value="Defence"> Défense / Defence</label>
-              <label class="check"><input type="radio" name="secondary_position" value="Center"> Centre / Center</label>
-              <label class="check"><input type="radio" name="secondary_position" value="Goaler"> Gardien / Goaler</label>
-              <label class="check"><input type="radio" name="secondary_position" value="None" checked> Aucune / None</label>
-            </div>
-          </div>
-
-          <div>
-            <label>Côté / Side <span class="req">*</span></label>
-            <div class="check-row" aria-label="Side (L/R)">
-              <label class="check"><input type="checkbox" name="side_right" value="Yes"> Droite / Right</label>
-              <label class="check"><input type="checkbox" name="side_left"  value="Yes"> Gauche / Left</label>
-            </div>
-          </div>
-
-          <div class="input-container">
-            <label for="player_style">Style de joueur / Player style</label>
-            <input id="player_style" name="player_style" type="text">
-          </div>
-
-          <div class="input-container">
-            <label for="video_links">Liens vidéo / Video links</label>
-            <textarea id="video_links" name="video_links"></textarea>
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- 3) Availability (data-driven) + confidence slider with hand -->
-      <fieldset id="fieldset-availability">
-        <legend>3) Disponibilités / Availability</legend>
-
-        <div class="grid">
-          <div class="muted">Aucun paiement maintenant / No payment now.</div>
-
-          <!-- Template for availability rows -->
-          <template id="tpl_avail_row">
-            <div class="avail-row">
-              <div class="muted avail-title"></div>
-              <div class="muted avail-info"></div>
-              <div class="check-row" aria-label="Availability">
-                <label class="check"><input type="radio" value="Yes"> Oui / Yes</label>
-                <label class="check"><input type="radio" value="No"> Non / No</label>
-                <label class="check"><input type="radio" value="TBD"> À confirmer / TBD</label>
-              </div>
-            </div>
-          </template>
-
-          <div id="availability_list"></div>
-
-          <!-- Confidence slider (keep hand-hint) -->
-          <div class="input-container">
-            <label for="confidence_pct">Confiance / Confidence (≥ 80%)</label>
-            <div class="slider-container" id="confidenceSlider">
-              <input type="range" id="confidence_pct" name="confidence_pct" min="80" max="100" value="80"
-                     aria-label="Confidence percent" aria-valuemin="80" aria-valuemax="100" aria-valuenow="80">
-              <div class="hand-hint" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.5 9.5V7.5c0-1.1-.9-2-2-2s-2 .9-2 2v2m8 0V7.5c0-1.1-.9-2-2-2s-2 .9-2 2v2m8 0V7.5c0-1.1-.9-2-2-2s-2 .9-2 2v2M6.5 9.5v1c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-1m-8 3v2a2 2 0 0 0 4 0v-2"/>
-                </svg>
-              </div>
-            </div>
-            <div class="confidence-display">
-              <span class="muted">Valeur / Value:</span>
-              <span class="confidence-value" id="confVal">80%</span>
-            </div>
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- 4) Confirmations -->
-      <fieldset id="fieldset-confirmations">
-        <legend>4) Confirmations</legend>
-        <div class="grid">
-          <label class="check"><input type="checkbox" name="ack_limited_spots" required> Places limitées / Limited spots <span class="req">*</span></label>
-          <label class="check"><input type="checkbox" name="consent_contact" required> J'accepte d'être contacté / I agree to be contacted <span class="req">*</span></label>
-
-          <div class="disclaimer-bottom">
-            Coûts additionnels : chandails et assurances.<br/>
-            Additional costs: jerseys and insurance.
-          </div>
-        </div>
-      </fieldset>
-
-            <div id="form_error_summary" class="form-error-summary" style="display:none;" role="alert" aria-live="assertive"></div>
-
-      <div class="submit">
-        <button type="reset" class="outline">Effacer / Clear</button>
-        <button type="submit" id="submitBtn">Soumettre / Submit</button>
-      </div>
-    </form>
-  </main>
-
-  <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
-
-  <!-- Spiderfy (optional) -->
-  <script src="https://unpkg.com/overlapping-marker-spiderfier-leaflet@0.3.3/oms.min.js"></script>
-
-  <!-- App -->
-  <script src="assets/app.js" defer></script>
-  <!-- Submit overlay -->
-  <div id="submit_overlay" class="submit-overlay" style="display:none;" aria-live="polite" aria-busy="true">
-    <div class="submit-overlay-card">
-      <div class="spinner" aria-hidden="true"></div>
-      <div class="submit-overlay-title">Envoi en cours… / Submitting…</div>
-      <div class="submit-overlay-sub">Merci de patienter quelques secondes. / Please wait a few seconds.</div>
-    </div>
+<div class="logo-row">
+  <div class="logo-box">
+    <img src="logos/qhc.jpg" alt="Québec HC">
   </div>
+  <div class="logo-box">
+    <img src="logos/no-labels.png" alt="No Labels">
+  </div>
+</div>
+
+<div class="center-text">
+  <h1 class="title">Québec HC — Elite Hockey</h1>
+  <div class="nl">No Labels. Just Performance.</div>
+  <div class="sub">
+    Ouvert à TOUS • Aucune obligation minimale<br/>
+    Open to ALL • No minimum commitment
+  </div>
+</div>
+
+<div class="pitch">
+FR 🇨🇦 — Groupe privé pour joueurs et familles visant un environnement élite structuré et flexible au printemps et à l’été.  
+EN 🇨🇦 — Invitation-only elite spring & summer hockey environment built for serious competitors.
+</div>
+
+<div class="buttons">
+  <a href="form.html" class="btn-primary">APPLY / FORMULAIRE D’INTÉRÊT</a>
+  <a href="admin3/login.html" class="btn-admin">Admin</a>
+</div>
+
+</div>
+
+<div class="footer">
+© Québec HC Elite Hockey
+</div>
+
+</div>
+</header>
+
 </body>
 </html>
+
 
 
