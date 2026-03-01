@@ -1,0 +1,112 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QHC Admin V3 — Dashboard</title>
+  <link rel="stylesheet" href="./admin3.css">
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <div class="logo"><img src="../logos/qhc.jpg" alt="QHC"></div>
+      <div>
+        <h1>Gestion des joueurs Québec HC Élite (V3)</h1>
+        <div id="today" class="sub"></div>
+      </div>
+
+      <div class="right">
+        <select id="teamSelect" class="btn btnGhost" style="min-width:220px"></select>
+        <select id="tournoiSelect" class="btn btnGhost" style="min-width:220px"></select>
+        <button id="btnLogout" class="btn btnPrimary">Déconnexion</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="filters">
+        <div>
+          <label>Année</label>
+          <select id="yearFilter"></select>
+        </div>
+
+        <div>
+          <label>Statut</label>
+          <select id="statusFilter"></select>
+        </div>
+
+        <div>
+          <label>Recherche</label>
+          <input id="searchFilter" placeholder="nom / ville / email">
+        </div>
+
+        <div>
+          <label>Page size</label>
+          <select id="pageSize">
+            <option value="50">50</option>
+            <option value="100" selected>100</option>
+            <option value="200">200</option>
+          </select>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:end;flex-wrap:wrap">
+          <button id="btnReset" class="btn btnGhost">Réinitialiser</button>
+        </div>
+<div style="margin-top:10px;display:flex;gap:12px;align-items:center">
+  <label style="display:flex;gap:8px;align-items:center;color:rgba(255,255,255,.75);font-size:13px">
+    <input type="checkbox" id="showArchived">
+    Voir archives
+  </label>
+</div>
+</div>
+      </div>
+    </div>
+
+    <div class="card actionBar" id="actionBar">
+      <div class="meta">Sélection: <b id="selCount">0</b></div>
+
+      <button id="btnCopyEmails" class="btn btnGhost">Copier emails</button>
+      <select id="emailSep" class="sepSelect">
+        <option value=",">Virgule ,</option>
+        <option value=";">Point-virgule ;</option>
+      </select>
+
+      <button id="btnAddToTournoi" class="btn btnGhost">Ajouter au tournoi (TBD)</button>
+      <select id="statusApply" class="sepSelect"></select>
+      <button id="btnApplyStatus" class="btn btnGhost">Appliquer statut</button>
+
+      <!-- quick buttons -->
+      <button id="btnQuickInteressant" class="btn btnGhost">⭐ Intéressant</button>
+      <button id="btnQuickEcarte" class="btn btnGhost">❌ Écarté</button>
+      <button id="btnCreateTeam" class="btn btnGhost">Créer équipe</button>
+      <button id="btnArchive" class="btn btnDanger">Archiver</button>
+      <button id="btnRestore" class="btn btnGhost">Restaurer</button>
+      <button id="btnNotes" class="btn btnGhost">✎ Notes</button>
+    </div>
+
+    <div id="loading"></div>
+    <div id="err"></div>
+
+    <!-- Desktop table -->
+    <div class="tableWrap" id="tableWrap">
+      <table>
+        <thead><tr id="theadRow"></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Mobile cards -->
+    <div class="cards" id="cards"></div>
+
+    <div class="pager">
+      <button id="btnPrev" class="btn btnGhost">◀ Précédent</button>
+      <div>Page <b id="pageNum">1</b> / <b id="pageTotal">1</b></div>
+      <button id="btnNext" class="btn btnGhost">Suivant ▶</button>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
+
+
+
