@@ -1,83 +1,312 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>No Labels. Just Performance. — Québec HC</title>
-<meta name="description" content="Québec HC — Elite spring & summer hockey. No Labels. Just Performance. Invitation-only."/>
-<meta name="theme-color" content="#0a1020"/>
-<meta name="format-detection" content="telephone=no">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>No Labels. Just Performance. — Québec HC</title>
+  <meta name="description" content="Québec HC — Elite spring & summer hockey. No Labels. Just Performance. Invitation-only."/>
+  <meta name="theme-color" content="#0a1020"/>
+  <meta name="format-detection" content="telephone=no">
 
-<!-- Social Preview (OpenGraph/Twitter) -->
-<link rel="canonical" href="https://yaban1981.github.io/QHC_Program/" />
-<meta property="og:site_name" content="Québec HC" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://yaban1981.github.io/QHC_Program/" />
-<meta property="og:title" content="No Labels. Just Performance." />
-<meta property="og:description" content="Elite spring & summer hockey • Ouvert à tous • Invitation-only group." />
-<meta property="og:image" content="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1836" />
-<meta property="og:image:height" content="2376" />
+  <!-- Social Preview (OpenGraph/Twitter) -->
+  <link rel="canonical" href="https://yaban1981.github.io/QHC_Program/" />
+  <meta property="og:site_name" content="Québec HC" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yaban1981.github.io/QHC_Program/" />
+  <meta property="og:title" content="No Labels. Just Performance." />
+  <meta property="og:description" content="Elite spring & summer hockey • Ouvert à tous • Invitation-only group." />
+  <meta property="og:image" content="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1836" />
+  <meta property="og:image:height" content="2376" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="No Labels. Just Performance." />
-<meta name="twitter:description" content="Québec HC — Elite spring & summer hockey." />
-<meta name="twitter:image" content="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="No Labels. Just Performance." />
+  <meta name="twitter:description" content="Québec HC — Elite spring & summer hockey." />
+  <meta name="twitter:image" content="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
 
-<link rel="apple-touch-icon" href="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
+  <link rel="apple-touch-icon" href="https://yaban1981.github.io/QHC_Program/logos/og-image.png?v=10" />
 
-<!-- Same CSS as the form -->
-<link rel="stylesheet" href="assets/styles.css">
+  <!-- Same design system base as the form -->
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    :root{
+      --max: 1180px;
+      --glass: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.16);
+      --stroke2: rgba(255,255,255,.22);
+      --dark: rgba(0,0,0,.22);
+    }
+
+    body{ margin:0; }
+
+    /* Premium background (still coherent with form vibe) */
+    .bg{
+      min-height: 100vh;
+      background:
+        radial-gradient(1100px 650px at 20% 10%, rgba(59,130,246,.18), transparent 55%),
+        radial-gradient(900px 520px at 85% 20%, rgba(212,175,55,.16), transparent 55%),
+        radial-gradient(1200px 800px at 50% 110%, rgba(255,255,255,.05), transparent 60%),
+        linear-gradient(180deg, #070b14 0%, #060914 45%, #050815 100%);
+      padding: 22px 0 60px;
+    }
+
+    .wrap{
+      width: min(var(--max), 92vw);
+      margin: 0 auto;
+    }
+
+    .panel{
+      border-radius: 28px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: 0 30px 90px rgba(0,0,0,.58);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .inner{
+      padding: 30px;
+    }
+
+    /* Logos vis-à-vis */
+    .logo-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 18px;
+    }
+    .logo-box{
+      width: 170px;
+      height: 170px;
+      border-radius: 30px;
+      border: 1px solid var(--stroke2);
+      background: rgba(255,255,255,.05);
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      box-shadow: 0 18px 55px rgba(0,0,0,.38);
+      flex: 0 0 auto;
+    }
+    .logo-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* Center message */
+    .center{
+      text-align:center;
+      margin-top: 18px;
+    }
+    .brand{
+      margin:0;
+      font-size: clamp(1.9rem, 1.45rem + 1.6vw, 3.1rem);
+      letter-spacing: .3px;
+    }
+    .nl{
+      margin-top: 12px;
+      font-weight: 1000;
+      font-size: clamp(2.0rem, 1.55rem + 1.7vw, 3.0rem);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .sub{
+      margin-top: 12px;
+      font-size: 1.12rem;
+      opacity: .86;
+      line-height: 1.6;
+    }
+
+    /* Value bullets */
+    .chips{
+      margin-top: 16px;
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      font-size: .98rem;
+      opacity: .96;
+    }
+
+    /* Bilingual pitch */
+    .pitch{
+      margin-top: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      padding: 18px;
+    }
+    .pitch-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 980px){
+      .pitch-grid{ grid-template-columns: 1fr 1fr; }
+    }
+    .lang h2{
+      margin:0 0 8px;
+      font-size: 1.08rem;
+      letter-spacing:.2px;
+    }
+    .lang p{
+      margin:0 0 10px;
+      opacity: .92;
+      line-height: 1.65;
+    }
+    .lang strong{
+      display:inline-block;
+      margin-top: 4px;
+      letter-spacing:.2px;
+    }
+
+    /* CTA */
+    .cta{
+      margin-top: 22px;
+      display:flex;
+      justify-content:center;
+      gap: 16px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      text-decoration:none;
+      font-weight: 1000;
+      letter-spacing: .5px;
+      border-radius: 18px;
+      padding: 18px 28px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.07);
+      color:#fff;
+      white-space: nowrap;
+      min-width: 240px;
+    }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, #d4af37, #3b82f6);
+      box-shadow: 0 18px 45px rgba(59,130,246,.33);
+      font-size: 1.15rem;
+    }
+    .btn.admin{
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.14);
+      opacity: .92;
+      min-width: 140px;
+      padding: 16px 20px;
+    }
+
+    .footer{
+      margin-top: 18px;
+      text-align:center;
+      opacity: .72;
+      font-size: .95rem;
+      padding-bottom: 6px;
+    }
+
+    @media (max-width: 760px){
+      .inner{ padding: 22px; }
+      .logo-box{ width: 132px; height: 132px; border-radius: 26px; }
+      .btn{ min-width: 100%; }
+      .btn.admin{ min-width: 100%; }
+    }
+  </style>
 </head>
 
 <body>
+  <noscript>
+    <div style="background:#3b82f6;color:#fff;padding:10px;text-align:center">
+      JavaScript requis pour certaines fonctionnalités. / JavaScript required for some features.
+    </div>
+  </noscript>
 
-<header class="hero">
-<div class="home-wrap">
+  <div class="bg">
+    <div class="wrap">
+      <div class="panel">
+        <div class="inner">
 
-<div class="panel">
+          <div class="logo-row" aria-label="Logos">
+            <div class="logo-box">
+              <img src="logos/qhc.jpg" alt="Québec HC"
+                   onerror="this.onerror=null;this.src='logos/qhc.png';">
+            </div>
 
-<div class="logo-row">
-  <div class="logo-box">
-    <img src="logos/qhc.jpg" alt="Québec HC">
+            <div class="logo-box">
+              <img src="logos/no-labels.png" alt="No Labels"
+                   onerror="this.onerror=null;this.src='logos/no-labels.jpg';">
+            </div>
+          </div>
+
+          <div class="center">
+            <h1 class="brand">Québec HC — Elite Hockey</h1>
+            <div class="nl">No Labels. Just Performance.</div>
+            <div class="sub">
+              Ouvert à TOUS • Aucune obligation minimale<br/>
+              Open to ALL • No minimum commitment
+            </div>
+
+            <div class="chips" aria-label="Highlights">
+              <span class="chip">Spring / Summer</span>
+              <span class="chip">Structured</span>
+              <span class="chip">Flexible</span>
+              <span class="chip">Performance</span>
+              <span class="chip">Invitation-only</span>
+            </div>
+          </div>
+
+          <section class="pitch" aria-label="Bilingual pitch">
+            <div class="pitch-grid">
+              <div class="lang">
+                <h2>FR 🇨🇦</h2>
+                <p>
+                  Groupe privé destiné aux joueurs et familles qui souhaitent évoluer dans un environnement de hockey élite au printemps et à l’été,
+                  avec une approche structurée, flexible et axée sur l’excellence.
+                </p>
+                <p>
+                  Québec HC collabore avec des organisations, entraîneurs et événements de haut niveau afin d’offrir des expériences de qualité,
+                  tout en conservant une structure efficace permettant d’optimiser les coûts pour les familles.
+                </p>
+                <strong>Accès sur invitation seulement.</strong>
+              </div>
+
+              <div class="lang">
+                <h2>EN 🇨🇦</h2>
+                <p>
+                  Private group for players and families seeking an elite spring & summer hockey environment,
+                  built on a structured, flexible and performance-driven approach.
+                </p>
+                <p>
+                  Québec HC works alongside top-tier organizations, coaches and events to deliver high-quality experiences,
+                  while maintaining an efficient structure that helps optimize costs for participants.
+                </p>
+                <strong>Invitation-only group.</strong>
+              </div>
+            </div>
+          </section>
+
+          <div class="cta" aria-label="Calls to action">
+            <a class="btn primary" href="form.html">APPLY / FORMULAIRE D’INTÉRÊT</a>
+            <a class="btn admin" href="admin3/login.html">Admin</a>
+          </div>
+
+          <div class="footer">© Québec HC Elite Hockey</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="logo-box">
-    <img src="logos/no-labels.png" alt="No Labels">
-  </div>
-</div>
-
-<div class="center-text">
-  <h1 class="title">Québec HC — Elite Hockey</h1>
-  <div class="nl">No Labels. Just Performance.</div>
-  <div class="sub">
-    Ouvert à TOUS • Aucune obligation minimale<br/>
-    Open to ALL • No minimum commitment
-  </div>
-</div>
-
-<div class="pitch">
-FR 🇨🇦 — Groupe privé pour joueurs et familles visant un environnement élite structuré et flexible au printemps et à l’été.  
-EN 🇨🇦 — Invitation-only elite spring & summer hockey environment built for serious competitors.
-</div>
-
-<div class="buttons">
-  <a href="form.html" class="btn-primary">APPLY / FORMULAIRE D’INTÉRÊT</a>
-  <a href="admin3/login.html" class="btn-admin">Admin</a>
-</div>
-
-</div>
-
-<div class="footer">
-© Québec HC Elite Hockey
-</div>
-
-</div>
-</header>
-
 </body>
 </html>
-
-
-
-
