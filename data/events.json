@@ -201,6 +201,33 @@
                        "lat":  36.1627,
                        "lng":  -86.7816,
                        "collab":  true
+                   },
+                   {
+                       "id":  "clash",
+                       "type":  "tournament",
+                       "title_fr":  "Continental Clash",
+                       "title_en":  "Continental Clash",
+                       "start_date":  "2026-06-16",
+                       "end_date":  "2026-06-21",
+                       "season":  "summer",
+                       "region":  "na",
+                       "years":  [
+                                     2015
+                                 ],
+                       "level":  "elite",
+                       "city":  "Montréal",
+                       "country":  "Canada",
+                       "logo":  "clash",
+                       "source_url":  "https://superserieshockey.com/events/continental-clash/",
+                       "player_price":  "TBD",
+                       "currency":  "CAD",
+                       "lat":  45.5017,
+                       "lng":  -73.5673,
+                       "availability_field":  "continental_clash",
+                       "capacity":  {
+
+                                    },
+                       "collab":  false
                    }
                ]
 }
